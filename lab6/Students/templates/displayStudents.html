@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>display students</title>
+</head>
+<body>
+<ol>
+  {% for student in students %}
+  <li><a href="{% url 'displayStudentDetails' student.id%}">Student {{student.id}}</a>:  {{student.first}} {{student.last}}, phone number: {{student.phone}}</li>
+    {% endfor %}
+</ol>
+
+<form action="{% url 'displayStudents' %}" method ="POST">
+      {% csrf_token %}
+
+    {{ form}}
+    <input type = "submit" value = "Add Student">
+</form>
+
+<a href = "{% url 'displayCourses' %}">Add course</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student details</title>
+</head>
+<body>
+<b>ID {{ student.id }}: {{ student.first }} {{student.last}}, phone: {{student.phone}}</b>
+
+
+    <form>
+        <select>
+            {% for c in notRegisteredCoureses %}
+                <option value="{{c.course_id}}"> {{ c }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Add Course">
+    </form>
+
+<ul>
+    {% for course in student.courses.all%}
+    <li><b>Course name: {{course.course_name}}, Course code: {{course.course_code}}</b></li>
+    {% endfor %}
+
+
+</ul>
+<a href ="{% url 'displayStudents'%}">Display all students</a>
+</body>
+</html>
